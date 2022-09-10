@@ -1,0 +1,104 @@
+@import url("./reset.css");
+@import url("./variables.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+body {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+  height: 100vh;
+}
+
+.todo-background {
+  width: 100%;
+  height: 100%;
+  background-color: var(--Very-Dark-Blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-background-img {
+  /* width: 100%;
+  height: 100%; */
+}
+
+.todo-background-img img {
+}
+
+.wrapper {
+  width: 510px;
+  height: 637px;
+  background-color: tomato;
+  position: absolute;
+  top: 70px;
+}
+
+.todo-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.todo-app-header h1 {
+  font-size: 38px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 15px;
+}
+
+.todo-app-header img {
+  width: 30px;
+  height: 30px;
+}
+
+.todo-input {
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  height: 60px;
+  margin-bottom: 22px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.todo-list {
+  width: 100%;
+  height: 300px;
+  background-color: green;
+  border-radius: 5px;
+  margin-bottom: 48px;
+}
+
+footer {
+  text-align: center;
+}
+
+.todo-input input {
+  width: 400px;
+  color: var(--Light-Grayish-Blue);
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: inherit;
+  border-style: none;
+  caret-color: var(--Bright-Blue);
+  padding-top: 5px;
+  box-sizing: border-box;
+}
+
+.todo-input input:focus {
+  outline: none;
+}
+
+.check-btn-area {
+  width: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--Very-Dark-Grayish-Blue);
+}
