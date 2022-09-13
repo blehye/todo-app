@@ -14,7 +14,7 @@
 
     <title>Frontend Mentor | Todo app</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/index.js"></script>
+    <script src="./js/todo-app.js"></script>
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
@@ -24,10 +24,10 @@
         left: calc(50% - 120px);
         font-size: 11px;
         text-align: center;
-        color: white;
+        color: var(--Very-Dark-Grayish-Blue);
       }
       .attribution a {
-        color: white;
+        color: var(--Very-Dark-Grayish-Blue);
       }
     </style>
   </head>
@@ -42,13 +42,32 @@
           <img src="./images/icon-sun.svg" alt="" />
         </header>
         <main>
-          <div class="todo-input">
+          <form id="input-form" class="todo-form border-radius margin-bottom">
             <div class="check-btn-area">
               <div class="check-btn"></div>
             </div>
-            <input type="text" />
+            <input id="my-todo-input" class="todo-input" type="text" />
+          </form>
+          <ul class="todo-list">
+            <!-- <li class="todo-form border-bottom">
+              <div class="check-btn-area">
+                <div class="check-btn"></div>
+              </div>
+              <div class="update-my-todo-input todo-input align-items-center">
+                안녕
+              </div>
+              <div class="cross-btn-area align-items-center">
+                <img src="./images/icon-cross.svg" alt="" />
+              </div>
+            </li> -->
+          </ul>
+          <div class="todo-list-control todo-form align-items-center hidden">
+            <span class="items-left">5 items left</span>
+            <span class="all-btn">All</span>
+            <span class="active-btn">Active</span>
+            <span class="completed-btn">Completed</span>
+            <span>Clear Completed</span>
           </div>
-          <ul class="todo-list"></ul>
         </main>
         <footer>Drag and drop to reorder list</footer>
       </div>
@@ -59,9 +78,5 @@
         >. Coded by <a href="#">Blehye</a>.
       </div>
     </div>
-
-    <!-- Add dynamic number -->
-    <!-- items left All Active Completed Clear Completed Drag and drop to reorder
-    list -->
   </body>
 </html>

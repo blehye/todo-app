@@ -29,7 +29,7 @@ body {
 .wrapper {
   width: 510px;
   height: 637px;
-  background-color: tomato;
+
   position: absolute;
   top: 70px;
 }
@@ -38,7 +38,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 45px;
+  margin-bottom: 55px;
 }
 
 .todo-app-header h1 {
@@ -53,27 +53,48 @@ body {
   height: 30px;
 }
 
-.todo-input {
+.todo-form {
   background-color: var(--Very-Dark-Desaturated-Blue);
   height: 60px;
-  margin-bottom: 22px;
-  border-radius: 5px;
+
   display: flex;
+}
+
+.border-radius {
+  border-radius: 5px;
+}
+
+.border-radius-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+}
+
+.margin-bottom {
+  margin-bottom: 22px;
+}
+
+.cross-btn-area {
+  width: 44px;
 }
 
 .todo-list {
   width: 100%;
-  height: 300px;
+  /* height: 300px; */
   background-color: green;
   border-radius: 5px;
-  margin-bottom: 48px;
 }
 
 footer {
   text-align: center;
+  color: var(--Very-Dark-Grayish-Blue);
+  font-size: 15px;
 }
 
-.todo-input input {
+.todo-input {
   width: 400px;
   color: var(--Light-Grayish-Blue);
   font-size: 20px;
@@ -85,7 +106,34 @@ footer {
   box-sizing: border-box;
 }
 
-.todo-input input:focus {
+.todo-list-control {
+  height: 47px;
+  color: var(--Very-Dark-Grayish-Blue);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0px 18px;
+  font-size: 14px;
+  margin-bottom: 48px;
+}
+
+.items-left {
+  margin-right: 80px;
+}
+
+.active-btn {
+  margin: 0px 17px;
+}
+
+.completed-btn {
+  margin-right: 53px;
+}
+
+.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+.todo-input:focus {
   outline: none;
 }
 
@@ -101,4 +149,33 @@ footer {
   height: 20px;
   border-radius: 50%;
   border: 2px solid var(--Very-Dark-Grayish-Blue);
+}
+
+.check-btn:hover {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(
+      var(--Very-Dark-Desaturated-Blue),
+      var(--Very-Dark-Desaturated-Blue)
+    ),
+    linear-gradient(
+      to bottom right,
+      var(--check-btn-blue),
+      var(--check-btn-purple)
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.cross-btn-area img:hover {
+  cursor: pointer;
+}
+
+.update-my-todo-input:hover {
+  cursor: pointer;
 }
