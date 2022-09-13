@@ -3,27 +3,25 @@ window.onload = function () {
   const todoList = document.querySelector(".todo-list");
   const updateMyTodoInput = document.querySelector(".update-my-todo-input");
   const todoListControl = document.querySelector(".todo-list-control");
-  const myTodoInput = document.querySelector("#my-todo-input").value;
+  const myTodoInput = document.querySelector("#my-todo-input");
+  const deleteBtn = document.querySelector(".cross-btn-area img");
   let todoArray = [];
 
-  inputForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    todoArray.push(myTodoInput);
-    console.log(myTodoInput);
-    paintTodo(myTodoInput);
-    console.log("1");
+  //localStorage 에 투두 저장
+  function saveToDos() {
     localStorage.setItem("todoList", JSON.stringify(todoArray));
-    console.log("2");
-    const savedTodoList = localStorage.getItem("todoList");
-    if (savedTodoList) {
-      const parsedTodoList = JSON.parse(savedTodoList);
-      parsedTodoList.forEach(paintTodo);
-    }
-  });
+  }
 
-  function paintTodo(newTodo) {
-    console.log("아니이게왜");
+  function deleteToDo(event) {
+    const li = event.target.parentElement.parentElement;
+    li.remove();
+    todoArray = todoArray.filter((toDo) => toDo.id !== parseInt(li.id));
+    saveToDos();
+  }
+
+  function paintTodo(newTodoObject) {
     const li = document.createElement("li");
+    li.id = newTodoObject.id;
     const div = document.createElement("div");
     todoList.appendChild(li);
     const lastLi = todoList.querySelector("li:last-child");
@@ -55,8 +53,8 @@ window.onload = function () {
     );
     const crossImg = crossBtnAreaDiv.appendChild(document.createElement("img"));
     crossImg.src = "./images/icon-cross.svg";
-    document.querySelector("#my-todo-input").value = "";
-    updateMyTodoInputDiv.innerHTML = newTodo;
+    // document.querySelector("#my-todo-input").value = "";
+    updateMyTodoInputDiv.innerHTML = newTodoObject.text;
 
     const firstList = todoList.querySelector("li:first-child");
     firstList.classList.add("border-radius-top");
@@ -68,10 +66,34 @@ window.onload = function () {
       const crossBtnAreaDiv = list[i].querySelector("div:nth-child(3)");
       list[i].addEventListener("mouseover", function () {
         crossBtnAreaDiv.classList.remove("hidden");
+        crossBtnAreaDiv.addEventListener("click", deleteToDo);
       });
       list[i].addEventListener("mouseout", function () {
         crossBtnAreaDiv.classList.add("hidden");
       });
     }
+  }
+
+  function handleToDoSubmit(event) {
+    event.preventDefault();
+    const newTodo = myTodoInput.value;
+    myTodoInput.value = "";
+    const newTodoObject = {
+      text: newTodo,
+      id: Date.now(), //랜덤한 id 만들기
+    };
+    todoArray.push(newTodoObject);
+    paintTodo(newTodoObject);
+    saveToDos();
+  }
+
+  //input을 submit할때의 이벤트
+  inputForm.addEventListener("submit", handleToDoSubmit);
+
+  const savedTodoList = localStorage.getItem("todoList");
+  if (savedTodoList !== null) {
+    const parsedTodoList = JSON.parse(savedTodoList);
+    todoArray = parsedTodoList;
+    parsedTodoList.forEach(paintTodo);
   }
 };
